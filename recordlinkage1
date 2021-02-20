@@ -1,0 +1,221 @@
+#set up and load data
+sdfilepath="surveydata"
+adfilepath="admindata"
+surveydata<-
+surveydata<-
+admindata<-
+damindata<-
+
+##remove period from column names##
+colnames(surveydata)
+colnames(admindata)
+
+##drop empty rows##
+surveydata<-
+admindata<-
+
+##descriptive analysis##
+
+##summary of potential blocking variables##
+summary(surveydata$)
+summary(admindata)
+
+
+#First Linkage: names bloking variable:race"
+
+first<-RLBigData(surveydata,admindata)
+
+first@pairs
+
+##EM Weights##
+first<-RLBigData(surveydata,admindata)
+firstw_1<-emWeights(first,cutoff=0.7)
+print(firstw_1)
+
+#get the mean
+summary(firstw_1@Wdata[])
+#get the distribution
+pairs=getPairs(firstw_1,min.weight=0,single.rows=TRUE)
+hist(as.numeric(paste(pairs$Weight)))
+#get the optimal threshold
+threshold_firstw_1<-optimalThreshold(firstw_1)
+
+
+first_class1.1<-emClassfigy(firstw_1,threshold.upper=0)
+getTable(first_class1.1)
+getErrorMeasures(first_class1.1)
+
+
+first_class1.2<-emClassfigy(firstw_1,threshold.upper=)
+getTable(first_class1.2)
+getErrorMeasures(first_class1.2)
+
+first_class1.3<-emClassfigy(firstw_1,threshold.lower=,threshold.upper=)
+getTable(first_class1.3)
+getErrorMeasures(first_class1.3)
+
+first_class1.4<-emClassfigy(firstw_1,threshold.upper=threshold_firstw_1)
+getTable(first_class1.4)
+getErrorMeasures(first_class1.4)
+
+
+firstw_2<-emWeights(first,cutoff=0.8)
+print(firstw_2)
+
+#get the mean
+summary(firstw_2@Wdata[])
+#get the distribution
+pairs=getPairs(firstw_2,min.weight=0,single.rows=TRUE)
+hist(as.numeric(paste(pairs$Weight)))
+#get the optimal threshold
+threshold_firstw_2<-optimalThreshold(firstw_2)
+
+
+first_class1.1<-emClassfigy(firstw_2,threshold.upper=0)
+getTable(first_class2.1)
+getErrorMeasures(first_class2.1)
+
+
+first_class2.2<-emClassfigy(firstw_2,threshold.upper=)
+getTable(first_class2.2)
+getErrorMeasures(first_class2.2)
+
+first_class2.3<-emClassfigy(firstw_2,threshold.lower=,threshold.upper=)
+getTable(first_class2.3)
+getErrorMeasures(first_class2.3)
+
+first_class2.4<-emClassfigy(firstw_2,threshold.upper=threshold_firstw_2)
+getTable(first_class2.4)
+getErrorMeasures(first_class2.4)
+
+
+
+
+firstw_3<-emWeights(first,cutoff=0.9)
+print(firstw_3)
+
+#get the mean
+summary(firstw_3@Wdata[])
+#get the distribution
+pairs=getPairs(firstw_3,min.weight=0,single.rows=TRUE)
+hist(as.numeric(paste(pairs$Weight)))
+#get the optimal threshold
+threshold_firstw_3<-optimalThreshold(firstw_3)
+
+
+first_class3.1<-emClassfigy(firstw_3,threshold.upper=0)
+getTable(first_class3.1)
+getErrorMeasures(first_class3.1)
+
+
+first_class3.2<-emClassfigy(firstw_3,threshold.upper=)
+getTable(first_class3.2)
+getErrorMeasures(first_class3.2)
+
+first_class3.3<-emClassfigy(firstw_3,threshold.lower=,threshold.upper=)
+getTable(first_class3.3)
+getErrorMeasures(first_class3.3)
+
+first_class3.4<-emClassfigy(firstw_3,threshold.upper=threshold_firstw_3)
+getTable(first_class3.4)
+getErrorMeasures(first_class3.4)
+
+
+
+
+#Record Linkage with multiple variable#
+##Linking variables:ssn, telephone;Blocking variable: marital status##
+
+second<-RLBigData(surveydata,admindata)
+
+second@pairs
+
+##EM Weights##
+second<-RLBigData(surveydata,admindata)
+secondw_1<-emWeights(second,cutoff=0.7)
+print(secondw_1)
+
+#get the mean
+summary(secondw_1@Wdata[])
+#get the distribution
+pairs=getPairs(secondw_1,min.weight=0,single.rows=TRUE)
+hist(as.numeric(paste(pairs$Weight)))
+#get the optimal threshold
+threshold_secondw_1<-optimalThreshold(secondw_1)
+
+
+second_class1.1<-emClassfigy(secondw_1,threshold.upper=0)
+getTable(second_class1.1)
+getErrorMeasures(second_class1.1)
+
+
+second_class1.2<-emClassfigy(secondw_1,threshold.upper=)
+getTable(second_class1.2)
+getErrorMeasures(second_class1.2)
+
+second_class1.3<-emClassfigy(secondw_1,threshold.lower=,threshold.upper=)
+getTable(second_class1.3)
+getErrorMeasures(second_class1.3)
+
+second_class1.4<-emClassfigy(secondw_1,threshold.upper=threshold_secondw_1)
+getTable(second_class1.4)
+getErrorMeasures(second_class1.4)
+
+
+secondw_2<-emWeights(second,cutoff=0.8)
+print(secondw_2)
+
+#get the mean
+summary(secondw_2@Wdata[])
+#get the distribution
+pairs=getPairs(secondw_2,min.weight=0,single.rows=TRUE)
+hist(as.numeric(paste(pairs$Weight)))
+#get the optimal threshold
+threshold_secondw_2<-optimalThreshold(secondw_2)
+
+
+second_class1.1<-emClassfigy(secondw_2,threshold.upper=0)
+getTable(second_class2.1)
+getErrorMeasures(second_class2.1)
+
+
+second_class2.2<-emClassfigy(secondw_2,threshold.upper=)
+getTable(second_class2.2)
+getErrorMeasures(second_class2.2)
+
+second_class2.3<-emClassfigy(secondw_2,threshold.lower=,threshold.upper=)
+getTable(second_class2.3)
+getErrorMeasures(second_class2.3)
+
+second_class2.4<-emClassfigy(secondw_2,threshold.upper=threshold_secondw_2)
+getTable(second_class2.4)
+getErrorMeasures(second_class2.4)
+
+secondw_3<-emWeights(first,cutoff=0.9)
+print(secondw_3)
+
+#get the mean
+summary(secondw_3@Wdata[])
+#get the distribution
+pairs=getPairs(secondw_3,min.weight=0,single.rows=TRUE)
+hist(as.numeric(paste(pairs$Weight)))
+#get the optimal threshold
+threshold_secondw_3<-optimalThreshold(secondw_3)
+
+
+second_class3.1<-emClassfigy(secondw_3,threshold.upper=0)
+getTable(second_class3.1)
+getErrorMeasures(second_class3.1)
+
+
+second_class3.2<-emClassfigy(secondw_3,threshold.upper=)
+getTable(second_class3.2)
+getErrorMeasures(second_class3.2)
+
+second_class3.3<-emClassfigy(secondw_3,threshold.lower=,threshold.upper=)
+getTable(second_class3.3)
+getErrorMeasures(second_class3.3)
+
+second_class3.4<-emClassfigy(secondw_3,threshold.upper=threshold_secondw_3)
+getTable(second_class3.4)
+getErrorMeasures(second_class3.4)
