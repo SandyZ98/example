@@ -19,15 +19,21 @@ admindata<-
 ##summary of potential blocking variables##
 summary(surveydata$)
 summary(admindata)
-
+## From the output, we see a few potential blocking variables:##
 
 #First Linkage: names bloking variable:race"
-
+#I added phonic in this linkage#
 first<-RLBigData(surveydata,admindata)
 
 first@pairs
 
 ##EM Weights##
+## According to Borg and Sariyar,2015, 0.7 is recommended for levenshteinSim, but Brain gives an example of 0.95, so I select three values for the cutoff(0.7,0.8,0.9), we
+can narrow it to one or two later.##
+## For the threshold, I selected four values in total: 0, mean o the Wdata, possible threshold according to the histogram, and optimalbthreshold.##
+##I then print sensitivity and precison of each case##
+
+
 first<-RLBigData(surveydata,admindata)
 firstw_1<-emWeights(first,cutoff=0.7)
 print(firstw_1)
@@ -219,3 +225,9 @@ getErrorMeasures(second_class3.3)
 second_class3.4<-emClassfigy(secondw_3,threshold.upper=threshold_secondw_3)
 getTable(second_class3.4)
 getErrorMeasures(second_class3.4)
+
+#Get pairs and export dataset#
+final pairs= getPairs(,filter.link="link",single.rows=TRUE)
+
+csvfilepath="finalpairs,csv"
+write.csv(finalpairs, file=csvfilepath)
